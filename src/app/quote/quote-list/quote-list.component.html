@@ -1,1 +1,18 @@
-<h1>Quotes List</h1>
+<div>
+    <h1>Quotes List</h1>
+    <div *ngFor="let x of quotes, let idx = index" class="quotes">
+        <div class="text">
+            <p>"{{ x.content }}"</p>
+            <h5> - {{ x.author }}</h5>
+        </div>
+        <div class="rating">
+            <h1 *ngIf="x.rating > 0">+{{ x.rating }}</h1>
+            <h1 *ngIf="x.rating <= 0">{{ x.rating }}</h1>
+        </div>
+        <div class="buttons">
+            <button (click)="triggerUp(idx)" id="up">Vote Up</button>
+            <button (click)="triggerDown(idx)" id="down">Vote Down</button>
+            <button (click)="triggerDelete(idx)" id="delete">Vote Delete</button>
+        </div>
+    </div>
+</div>

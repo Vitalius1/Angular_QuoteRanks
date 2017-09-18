@@ -1,0 +1,39 @@
+.quotes{
+    border: 1px solid black;
+    width: 100%;
+}
+.text{
+    width: 55%;
+    display: inline-block;
+    vertical-align: top;
+}
+.rating{
+    display: inline-block;
+    width: 16%;
+    text-align: center;
+    vertical-align: top;
+    margin-top: 4%;
+}
+.buttons{
+    width: 25%;
+    display: inline-block;
+    margin: 1%;
+}
+#up{
+    width: 100%;
+    background-color: #B7D6AA;
+    margin-bottom: 3%;
+    font-size: 1.5em;
+}
+#down{
+    width: 100%;
+    background-color: #E8999A;
+    margin-bottom: 3%;
+    font-size: 1.2em;
+}
+#delete{
+    width: 100%;
+    color: wheat;
+    background-color: #333333;
+    font-size: 1.5em;
+}

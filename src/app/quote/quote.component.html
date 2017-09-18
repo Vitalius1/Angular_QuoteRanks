@@ -1,9 +1,22 @@
 <h1>Add a Quote</h1>
-<form (submit)="onSubmit()" #f="ngForm">
-  <textarea name="content" cols="100" rows="6" required minlength="4" placeholder="Your quote here..." [(ngModel)]="quote.content" #content="ngModel"></textarea>
+<form (submit)="onSubmit(f)" #f="ngForm">
+  
+  <textarea name="content" cols="100" rows="6" required minlength="4" placeholder="Your quote here..." [(ngModel)]="quote.content"
+    #content="ngModel"></textarea>
+  <div class="errors" *ngIf="content.invalid && (content.dirty || content.touched)">
+    <div class="errors" *ngIf="content?.errors.required">Content is required.</div>
+    <div class="errors" *ngIf="content?.errors.minlength">Content should be at least 4 characters long.</div>
+  </div><br>
+  
   <label for="author">Author</label>
-  <input type="text" name="author" required minlength="1" [(ngModel)]="quote.author" #author="ngModel">
+  <input type="text" name="author" required minlength="1" pattern="[a-zA-Z]+" [(ngModel)]="quote.author" #author="ngModel">
+  <div class="errors" *ngIf="author.invalid && (author.dirty || author.touched)">
+    <div class="errors" *ngIf="author?.errors.required">Author name is required.</div>
+    <div class="errors" *ngIf="author?.errors.minlength">Author name should be at least 1 characters long.</div>
+    <div class="errors" *ngIf="author?.errors.pattern">Author name should be letters characters only.</div>
+  </div><br>
+
   <button type="submit" [disabled]="f.invalid">Add Quote</button>
 </form>
 
-<app-quote-list [quotes]="quotes"></app-quote-list>
+<app-quote-list [quotes]="quotes" (upEventEmitter)="upVote($event)" (downEventEmitter)="downVote($event)" (deleteEventEmitter)="deleteQuote($event)"></app-quote-list>
