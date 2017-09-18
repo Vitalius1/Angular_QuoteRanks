@@ -1,0 +1,9 @@
+<h1>Add a Quote</h1>
+<form (submit)="onSubmit()" #f="ngForm">
+  <textarea name="content" cols="100" rows="6" required minlength="4" placeholder="Your quote here..." [(ngModel)]="quote.content" #content="ngModel"></textarea>
+  <label for="author">Author</label>
+  <input type="text" name="author" required minlength="1" [(ngModel)]="quote.author" #author="ngModel">
+  <button type="submit" [disabled]="f.invalid">Add Quote</button>
+</form>
+
+<app-quote-list [quotes]="quotes"></app-quote-list>
